@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: anki-backend
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/anki_db}
+    username: ${SPRING_DATASOURCE_USERNAME:anki_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+jwt:
+  secret: ${JWT_SECRET:default_secret_change_me_min_32_chars}
+  expiration: ${JWT_EXPIRATION:604800000}  # 7 days in milliseconds
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.peanuts.anki: INFO
+    org.springframework.security: INFO
